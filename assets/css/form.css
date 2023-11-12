@@ -1,0 +1,90 @@
+body {
+    background-color: #F3F5F7;
+}
+
+.reg-form-div {
+    width: 600px;
+    display: flex;
+    align-items: center;
+
+    margin: auto;
+    margin-top: 10vh;
+
+    padding: 20px;
+
+    background-color: #EBEBEB;
+
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(153, 153, 153);
+    border-radius: 6px;
+    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.reg-form {
+    width: 50%;
+}
+
+.reg-form h1 {
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.reg-logo {
+    width: 45%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.input {
+    width: 100%;
+    padding: 5px 10px;
+    
+    border-radius: 6px;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(153, 153, 153);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+    background-color: rgb(244, 244, 244);
+}
+
+.sub-btn {
+    padding: 8px 10px;
+    border-radius: 6px;
+
+    background-color: rgb(100, 149, 255);
+    color: rgb(244, 244, 244);
+    font-weight: 700;
+    
+    letter-spacing: 2px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+    border: none;
+
+    cursor: pointer;
+
+    width: 100%;
+
+    transition: 0.1s;
+}
+
+.sub-btn:active {
+    background-color: rgb(48, 113, 252);
+}
+
+.alert {
+    width: fit-content;
+    background-color: rgb(237, 176, 176);
+    padding: 6px 8px;
+    border-radius: 6px;
+    text-align: center;
+    color: rgb(199, 40, 40);
+    margin: auto;
+}

@@ -1,0 +1,8 @@
+.footer-background {
+    background-color: rgb(218, 221, 227);
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}

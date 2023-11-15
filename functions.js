@@ -1,6 +1,5 @@
-function validateForm(input) {
+function validateCadastro(input) {
     let txtName = input.name.value;
-    let txtUserName = input.username.value;
     let txtEmail = input.email.value;
     let txtDate = input.birth.value;
     let txtPassword = input.password.value;
@@ -11,13 +10,8 @@ function validateForm(input) {
     clearAlerts();
 
     const alertContainer = document.getElementById('alerts');
-    console.log(txtDate);
-    console.log(txtName);
-    console.log(txtPassword);
-    console.log(txtRepeatPassword);
-    console.log(txtEmail);
-    console.log(txtUserName);
-    if (!txtName || !txtUserName || !txtEmail || !txtDate || !txtPassword || !txtRepeatPassword) {
+
+    if (!txtName || !txtEmail || !txtDate || !txtPassword || !txtRepeatPassword) {
         flag = false;
         createAlertDiv("Todos os campos são obrigatórios", alertContainer);
     }
@@ -32,6 +26,30 @@ function validateForm(input) {
     if (txtRepeatPassword !== txtPassword) {
         flag = false;
         createAlertDiv("Senhas não batem", alertContainer);
+    }
+    return flag;
+}
+
+function validateLogin(input) {
+    let txtEmail = input.email.value;
+    let txtPassword = input.password.value;
+
+    let flag = true;
+
+    clearAlerts();
+
+    const alertContainer = document.getElementById('alerts');
+    if (!txtEmail || !txtPassword) {
+        flag = false;
+        createAlertDiv("Todos os campos são obrigatórios", alertContainer);
+    }
+    if (!txtEmail.match(/[a-zA-Z0-9\.\-_]+@\w+\.(com|org|br|)/)) {
+        flag = false;
+        createAlertDiv("E-mail inválido", alertContainer);
+    }
+    if (txtPassword.length < 7) {
+        flag = false;
+        createAlertDiv("Senha requer pelo menos 7 caracteres", alertContainer);
     }
     return flag;
 }

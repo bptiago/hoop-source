@@ -32,23 +32,14 @@
             <div class="reg-logo">
                 <img src="./assets/images/cat.png" alt="" srcset="" style="width:100%">
             </div>
-            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateCadastro(this)" action="./users_cad_php.php">
-                <h1>Register</h1>
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateLogin(this)" action="./users_login_php.php">
+                <h1>Login</h1>
                 <div class="form">
-                    <div>
-                        <input type="text" name="name" id="name" class="input" placeholder="Name">
-                    </div>
                     <div>
                         <input type="text" name="email" id="email" class="input" placeholder="Email">
                     </div>
                     <div>
-                        <input type="date" name="birth" id="birth" class="input" placeholder="Birthdate" min="1930-01-01" value="2003-01-01">
-                    </div>
-                    <div>
                         <input type="password" name="password" id="password" class="input" placeholder="Password">
-                    </div>
-                    <div>
-                        <input type="password" name="confirmPassword" id="confirmPassword" class="input" placeholder="Confirm password">
                     </div>
                     <div>
                         <input type="submit" value="Enviar" name="send" class="sub-btn">

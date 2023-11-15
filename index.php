@@ -17,6 +17,17 @@
 </head>
 <body>
     <?php include "./assets/components/header.php";?>
+    <?php
+    session_start();
+    if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
+    ?>
+        <script>
+            alert("Você já está logado")
+            location.href = "users_index.php";
+        </script>
+    <?php
+    }
+    ?>
     <section class="index-main">
         <div class="main-content">
             <h1>HoopSource</h1>

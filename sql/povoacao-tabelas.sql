@@ -11,3 +11,7 @@ VALUES
     ("Damian Lillard", "1990-07-15", "Norte-Americano", 1.88, "Armador", 122000000, 0, "Milwaukee Bucks"),
     ("Stephen Curry", "1988-03-14", "Norte-Americano", 1.88, "Armador", 261000000, 30,  "Golden State Warriors"),
     ("Andrew Wiggins", "1995-02-23", "Norte-Americano", 2.01, "Ala", 140000000, 22, "Golden State Warriors");
+    
+    SELECT * FROM TIME;
+    
+    SELECT * FROM USUARIO;

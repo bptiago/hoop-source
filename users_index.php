@@ -16,6 +16,7 @@
     <title>HoopSource</title>
 </head>
 <body>
+    <?php session_start() ?>
     <?php include "./assets/components/header.php";?>
     <?php
         include("./connection.php");

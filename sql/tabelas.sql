@@ -32,7 +32,7 @@ CREATE TABLE Usuario (
     Nome_completo VARCHAR(50),
     Data_nascimento DATE,
     Email VARCHAR(50),
-    Senha VARCHAR(50),
+    Senha VARCHAR(200),
     UNIQUE (ID_usuario, Email)
 );
  

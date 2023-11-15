@@ -20,9 +20,9 @@ body {
 }
 
 .header-logo {
-    color: rgb(255, 87, 87);
-    font-family: IBM Plex Mono;
-    font-size: 36px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: 32px;
     margin-left: 70px;
     text-decoration: none;
 }

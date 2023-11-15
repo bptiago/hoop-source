@@ -25,7 +25,7 @@
             <div class="center-bottom-container">
                 <div>
                     <h4>Não tem cadastro?</h4>
-                    <a href="cadastro.php"><button>Criar conta</button></a>
+                    <a href="./users_cad.php"><button>Criar conta</button></a>
                 </div>
                 <div>
                     <h4>Quem somos?</h4>

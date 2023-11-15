@@ -21,17 +21,17 @@
             <div class="reg-logo">
                 <img src="./assets/images/cat.png" alt="" srcset="" style="width:100%">
             </div>
-            <form method="post" name="cadastro" class="reg-form" onsubmit="" action="index.php">
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateForm(this)">
                 <h1>Register</h1>
                 <div class="form">
                     <div>
                         <input type="text" name="name" id="name" class="input" placeholder="Name">
                     </div>
                     <div>
-                        <input type="text" name="email" id="email" class="input" placeholder="Email">
+                        <input type="text" name="username" id="username" class="input" placeholder="Username">
                     </div>
                     <div>
-                        <input type="text" name="cpf" id="cpf" class="input" placeholder="CPF" oninput="maskCPF(this)">
+                        <input type="text" name="email" id="email" class="input" placeholder="Email">
                     </div>
                     <div>
                         <input type="date" name="birth" id="birth" class="input" placeholder="Birthdate" min="1930-01-01">
@@ -48,7 +48,7 @@
                 </div>
             </form>
         </div>
-        <div>
+        <div id="alerts" style="display: flex; flex-direction:column; align-items:center">
             <?php 
                 if (isset($_POST['send'])) {
                     $fullName = $_POST['name'];
@@ -104,5 +104,6 @@
             ?>
         </div>
     </div>
+    <script src="./functions.js"></script>
 </body>
 </html>

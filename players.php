@@ -18,6 +18,14 @@
 <body>
     <?php include "./assets/components/header.php";?>
     <?php
+        session_start();
+        
+        if (isset($_SESSION['isAdmin'])) {
+            $_SESSION['isAdmin'] = true;
+            $_SESSION['id'] = 00;
+            $_SESSION['role'] = "admin";
+        }
+
         include("./connection.php");
         $id = $_GET['id'];
         $sql = "SELECT * FROM Time INNER JOIN Jogador ON (Time.Nome_time = Jogador.fk_Time_Nome_time) WHERE Id_time = $id ORDER BY Jogador.Nome";
@@ -35,6 +43,12 @@
                     <th>Camiseta</th>
                     <th>Altura</th>
                     <th>Valor Contrato</th>
+                    <?php 
+                        if ($_SESSION['isAdmin']) {
+                            echo "<th></th>";
+                            echo "<th></th>";
+                        }
+                    ?>
                 </tr>
                 <?php
                 if ($result->num_rows > 0) {
@@ -52,6 +66,22 @@
                                 <td><?php echo $row["Numero"] ?></td>
                                 <td><?php echo $row["Altura"]. ' m' ?></td>
                                 <td><?php echo $row["Valor"] ?></td>
+                                <?php 
+                                    if ($_SESSION['isAdmin']) {
+                                ?>
+                                        <td>
+                                            <a href="players_edit.php?id=<?php echo $row['ID_jogador'] ?>">
+                                                Editar
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="players_del_php.php?id=<?php echo $row['ID_jogador'] ?>">
+                                                Remover
+                                            </a>
+                                        </td>
+                                        <?php
+                                    }
+                                ?>
                             </tr>
                             <?php
                         }

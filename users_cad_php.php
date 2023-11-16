@@ -28,7 +28,7 @@
                 $stmt->bind_param("ssss", $fullName, $birthDate, $email, $password_hash);
                 $stmt->execute();
                 $stmt->close();
-                header("Location: users_index.php");
+                header("Location: users_login.php");
             } else {
                 // Something went wrong
                 ?>

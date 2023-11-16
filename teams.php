@@ -16,9 +16,16 @@
     <title>HoopSource</title>
 </head>
 <body>
-    <?php session_start() ?>
     <?php include "./assets/components/header.php";?>
     <?php
+        session_start();
+        
+        if (isset($_SESSION['isAdmin'])) {
+            $_SESSION['isAdmin'] = true;
+            $_SESSION['id'] = 00;
+            $_SESSION['role'] = "admin";
+        }
+
         include("./connection.php");
         $sql = "SELECT * FROM TIME";
         $result = $conn->query($sql);
@@ -33,6 +40,12 @@
                     <th>Estado</th>
                     <th>Cidade</th>
                     <th>Arena</th>
+                    <?php 
+                        if ($_SESSION['isAdmin']) {
+                            echo "<th></th>";
+                            echo "<th></th>";
+                        }
+                    ?>
                 </tr>
                 <?php
                     if ($result->num_rows > 0) {
@@ -40,7 +53,7 @@
                             ?>
                             <tr>
                                 <td>
-                                    <a href="team.php?id=<?php echo $row['Id_time'] ?>">
+                                    <a href="players.php?id=<?php echo $row['Id_time'] ?>">
                                         <?php echo $row["Nome_time"] ?>
                                     </a>
                                 </td>
@@ -48,6 +61,22 @@
                                 <td><?php echo $row["Estado"] ?></td>
                                 <td><?php echo $row["Cidade"] ?></td>
                                 <td><?php echo $row["Arena"] ?></td>
+                                <?php 
+                                    if ($_SESSION['isAdmin']) {
+                                ?>
+                                        <td>
+                                            <a href="teams_edit.php?id=<?php echo $row['Id_time'] ?>">
+                                                Editar
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="teams_del_php.php?id=<?php echo $row['Id_time'] ?>">
+                                                Remover
+                                            </a>
+                                        </td>
+                                        <?php
+                                    }
+                                ?>
                             </tr>
                             <?php
                         }

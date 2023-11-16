@@ -23,7 +23,7 @@
     ?>
         <script>
             alert("Você já está logado")
-            location.href = "users_index.php";
+            location.href = "teams.php";
         </script>
     <?php
     }

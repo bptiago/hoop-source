@@ -38,7 +38,7 @@
     <div>
         <div class="reg-form-div">
             <form method="post" name="cadastro" class="reg-form" onsubmit="return validateUserEdit(this)" style="margin: auto;" action="users_edit_php.php">
-                <h1>Editar Jogador</h1>
+                <h1>Editar Usuário</h1>
                 <div class="form">
                     <div style="text-align: center; margin-top: 2px">
                         <label for="nome">Nome</label>

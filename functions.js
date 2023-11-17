@@ -63,14 +63,6 @@ function validatePlayerEdit(input) {
     let txtAltura = input.altura.value;
     let txtValor = input.valorContrato.value;
 
-    console.log(txtNome);
-    console.log(txtDate);
-    console.log(txtNacionalidade);
-    console.log(txtPosicao);
-    console.log(txtCamiseta);
-    console.log(txtAltura);
-    console.log(txtValor);
-
     let flag = true;
 
     clearAlerts();
@@ -118,6 +110,26 @@ function validateUserEdit(input) {
     if (!txtEmail.match(/[a-zA-Z0-9\.\-_]+@\w+\.(com|org|br|)/)) {
         flag = false;
         createAlertDiv("E-mail inválido", alertContainer);
+    }
+    return flag;
+}
+
+function validateTeamEdit(input) {
+    let txtNome = input.nome.value;
+    let txtTecnico = input.tecnico.value;
+    let txtEstado = input.estado.value;
+    let txtCidade = input.cidade.value;
+    let txtArena = input.arena.value;
+
+    let flag = true;
+
+    clearAlerts();
+
+    const alertContainer = document.getElementById('alerts');
+
+    if (!txtNome || !txtTecnico || !txtEstado || !txtPosicao || !txtCidade || !txtArena) {
+        flag = false;
+        createAlertDiv("Todos os campos são obrigatórios", alertContainer);
     }
     return flag;
 }

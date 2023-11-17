@@ -28,7 +28,7 @@
 
         include("./connection.php");
         $id = $_GET['id'];
-        $sql = "SELECT * FROM Time INNER JOIN Jogador ON (Time.Nome_time = Jogador.fk_Time_Nome_time) WHERE Id_time = $id ORDER BY Jogador.Nome";
+        $sql = "SELECT * FROM Time INNER JOIN Jogador ON (Time.Id_time = Jogador.fk_Time_Id_time) WHERE Id_time = $id ORDER BY Jogador.Nome";
         $result = $conn->query($sql);
     ?>
     <section class="main" style="margin-top: 5vh;">

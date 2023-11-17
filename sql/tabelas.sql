@@ -6,8 +6,8 @@ CREATE DATABASE HoopSource;
 USE HoopSource;
 
 CREATE TABLE Time (
-    Id_time INT AUTO_INCREMENT UNIQUE,
-    Nome_time VARCHAR(50) PRIMARY KEY UNIQUE,
+    Id_time INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    Nome_time VARCHAR(50) UNIQUE,
     Tecnico VARCHAR(50),
     Cidade VARCHAR(50),
     Estado VARCHAR(20),
@@ -24,7 +24,7 @@ CREATE TABLE Jogador (
     Posicao VARCHAR(20),
     Valor FLOAT,
     Numero INT,
-    fk_Time_Nome_time VARCHAR(50)
+    fk_Time_Id_time INT
 );
 
 CREATE TABLE Usuario (
@@ -37,6 +37,6 @@ CREATE TABLE Usuario (
 );
  
 ALTER TABLE Jogador ADD CONSTRAINT FK_Jogador_2
-    FOREIGN KEY (fk_Time_Nome_time)
-    REFERENCES Time (Nome_time)
-    ON DELETE SET NULL;
+    FOREIGN KEY (fk_Time_Id_time)
+    REFERENCES Time (Id_time)
+    ON DELETE CASCADE;

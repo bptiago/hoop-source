@@ -54,7 +54,7 @@ function validateLogin(input) {
     return flag;
 }
 
-function validateEdit(input) {
+function validatePlayerEdit(input) {
     let txtNome = input.nome.value;
     let txtDate = input.birth.value;
     let txtNacionalidade = input.nacionalidade.value;
@@ -96,6 +96,28 @@ function validateEdit(input) {
     if (!txtValor.match(/^\d+$/g)) {
         flag = false;
         createAlertDiv("Valor de contrato aceita apenas números. Exemplo: 1800000", alertContainer);
+    }
+    return flag;
+}
+
+function validateUserEdit(input) {
+    let txtNome = input.nome.value;
+    let txtDate = input.birth.value;
+    let txtEmail = input.email.value;
+
+    let flag = true;
+
+    clearAlerts();
+
+    const alertContainer = document.getElementById('alerts');
+
+    if (!txtNome || !txtDate || !txtEmail) {
+        flag = false;
+        createAlertDiv("Todos os campos são obrigatórios", alertContainer);
+    }
+    if (!txtEmail.match(/[a-zA-Z0-9\.\-_]+@\w+\.(com|org|br|)/)) {
+        flag = false;
+        createAlertDiv("E-mail inválido", alertContainer);
     }
     return flag;
 }

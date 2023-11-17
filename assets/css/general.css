@@ -4,3 +4,13 @@
     box-sizing: border-box;
     font-family: Poppins, sans-serif;
 }
+
+.h2User {
+    margin-top: 3vh;
+    text-align: center;
+}
+
+.aUser {
+    text-align: center;
+    color: black;
+}

@@ -21,35 +21,23 @@
         include("connection.php");
         if (!isset($_SESSION["id"])) {
             header("Location: index.php");
-        }
-        else if (!$_SESSION['isAdmin']) {
-    ?>
-        <script>
-            alert("Você não tem permissão de exclusão no sistema");
-            history.go(-1);
-        </script>
-    <?php
         } else {
             $id = $_GET['id'];
             
-            $sql = "SELECT * FROM Jogador WHERE ID_jogador = '$id'";
+            $sql = "SELECT * FROM Usuario WHERE ID_usuario = '$id'";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    $nome = $row["Nome"];
+                    $nome = $row["Nome_completo"];
                     $dataNascimento = $row["Data_nascimento"];
-                    $nacionalidade = $row["Nacionalidade"];
-                    $altura = $row["Altura"];
-                    $posicao = $row["Posicao"];
-                    $valor = $row["Valor"];
-                    $camiseta = $row["Numero"];
+                    $email = $row["Email"];
                 }
             }
         }
     ?>
     <div>
         <div class="reg-form-div">
-            <form method="post" name="cadastro" class="reg-form" onsubmit="return validatePlayerEdit(this)" style="margin: auto;" action="players_edit_php.php">
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateUserEdit(this)" style="margin: auto;" action="users_edit_php.php">
                 <h1>Editar Jogador</h1>
                 <div class="form">
                     <div style="text-align: center; margin-top: 2px">
@@ -61,24 +49,8 @@
                         <input type="date" name="birth" id="birth" class="input" placeholder="Birthdate" min="1930-01-01" value="<?php echo $dataNascimento ?>">
                     </div>
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="nacionalidade">Nacionalidade</label>
-                        <input type="text" name="nacionalidade" id="nacionalidade" class="input" placeholder="Nacionalidade" value="<?php echo $nacionalidade ?>">
-                    </div>
-                    <div style="text-align: center; margin-top: 2px">
-                        <label for="posicao">Posição (Ala, volante ou pivo)</label>
-                        <input type="text" name="posicao" id="posicao" class="input" placeholder="Posição (Ala, Armador ou Pivô)" value="<?php echo $posicao ?>">
-                    </div>
-                    <div style="text-align: center; margin-top: 2px">
-                        <label for="camiseta">Número da camiseta</label>
-                        <input type="text" name="camiseta" id="camiseta" class="input" placeholder="Camiseta" value="<?php echo $camiseta ?>">
-                    </div>
-                    <div style="text-align: center; margin-top: 2px">
-                        <label for="altura">Altura (1.80, 1.90 etc.)</label>
-                        <input type="text" name="altura" id="altura" class="input" placeholder="Altura (metros)" value="<?php echo $altura ?>">
-                    </div>
-                    <div style="text-align: center; margin-top: 2px">
-                        <label for="valorContrato">Valor do contrato (apenas números)</label>
-                        <input type="text" name="valorContrato" id="valorContrato" class="input" placeholder="Valor do contrato (só números)" value="<?php echo $valor ?>">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="input" placeholder="Email" value="<?php echo $email ?>">
                     </div>
                     <input type="hidden" name="hideId" value="<?php echo $id ?>">
                     <div>

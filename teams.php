@@ -27,6 +27,19 @@
         }
 
         include("./connection.php");
+
+        $idUser = $_SESSION['id'];
+        $sqlUser = "SELECT Nome_completo FROM Usuario WHERE ID_usuario = '$idUser'";
+        $resultUser = $conn->query($sqlUser);
+
+        if ($resultUser->num_rows > 0) {
+            while ($row = $resultUser->fetch_assoc()) {
+                ?>
+                <h2 class="h2User">Bem-vindo, <span style="color: #FF4A01;"><?php echo $row['Nome_completo']?></span></h2>
+                <h3 style="text-align: center;"><a class="aUser" href="users_edit.php?id=<?php echo $idUser ?>">Editar perfil</a></h3>
+                <?php
+            }
+        }
         $sql = "SELECT * FROM TIME";
         $result = $conn->query($sql);
     ?>
@@ -41,7 +54,7 @@
                     <th>Cidade</th>
                     <th>Arena</th>
                     <?php 
-                        if ($_SESSION['isAdmin']) {
+                        if (isset($_SESSION['isAdmin'])) {
                             echo "<th></th>";
                             echo "<th></th>";
                         }
@@ -62,7 +75,7 @@
                                 <td><?php echo $row["Cidade"] ?></td>
                                 <td><?php echo $row["Arena"] ?></td>
                                 <?php 
-                                    if ($_SESSION['isAdmin']) {
+                                    if (isset($_SESSION['isAdmin'])) {
                                 ?>
                                         <td>
                                             <a href="teams_edit.php?id=<?php echo $row['Id_time'] ?>">

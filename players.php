@@ -44,7 +44,7 @@
                     <th>Altura</th>
                     <th>Valor Contrato</th>
                     <?php 
-                        if ($_SESSION['isAdmin']) {
+                        if (isset($_SESSION['isAdmin'])) {
                             echo "<th></th>";
                             echo "<th></th>";
                         }
@@ -67,7 +67,7 @@
                                 <td><?php echo $row["Altura"]. ' m' ?></td>
                                 <td><?php echo $row["Valor"] ?></td>
                                 <?php 
-                                    if ($_SESSION['isAdmin']) {
+                                    if (isset($_SESSION['isAdmin'])) {
                                 ?>
                                         <td>
                                             <a href="players_edit.php?id=<?php echo $row['ID_jogador'] ?>">

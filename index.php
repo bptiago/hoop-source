@@ -39,13 +39,13 @@
                 </div>
                 <div>
                     <h4>Quem somos?</h4>
-                    <a href="#"><button>Ver mais</button></a>
+                    <a href="#jump"><button>Ver mais</button></a>
                 </div>
             </div>
         </div>
     </section>
     <footer class="footer-background">
-        <h2 style="text-align: center; padding: 12px 6px; color: rgb(63, 96, 240)">Sobre nós</h2>
+        <h2 style="text-align: center; padding: 12px 6px; color: rgb(63, 96, 240);" id="jump">Sobre nós</h2>
         <div class="footer-layout">
             <div style="text-align:center;">
                 <h3>A equipe</h3>

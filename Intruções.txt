@@ -1,0 +1,13 @@
+Intruções de configuração e uso
+
+Banco de dados
+1 - O BD está configurado para o localhost com senha igual a PUC@1234 e porta 3306. Caso o seu BD local tenha algo diferente, é preciso mudar as configurações o arquivo connection.php
+2 - Depois do MySQL estar ok, executar os script SQL na seguinte ordem: 1 = tabelas.sql e 2 = povoacao-tabelas
+
+Xampp
+1 - Inserir o folder desse projeto na pasta htdocs do XAMPP
+2 - Abrir o XAMPP e ativar o apache
+3 - Digitar "localhost/hoop-source" no navegador
+
+Navegação
+1 - Existem dois tipos de usuário: o perfil normal e o perfil admin. Para acesso com perfil normal, precisa fazer cadastro primeiro. Para acesso com perfil admin, o login é admin@gmail.com e a senha é admin1234

@@ -54,7 +54,7 @@ function validateLogin(input) {
     return flag;
 }
 
-function validatePlayerEdit(input) {
+function validatePlayer(input) {
     let txtNome = input.nome.value;
     let txtDate = input.birth.value;
     let txtNacionalidade = input.nacionalidade.value;
@@ -73,9 +73,9 @@ function validatePlayerEdit(input) {
         flag = false;
         createAlertDiv("Todos os campos são obrigatórios", alertContainer);
     }
-    if (!txtPosicao.match(/(^ala$)|(^pivo$)|(^volante$)/gi)) {
+    if (!txtPosicao.match(/(^ala$)|(^pivo$)|(^armador$)/gi)) {
         flag = false;
-        createAlertDiv("Escreva a posição nos moldes: Pivo, Ala ou Volante", alertContainer);
+        createAlertDiv("Escreva a posição nos moldes: Pivo, Ala ou Armador", alertContainer);
     }
     if (!txtCamiseta.match(/(^\d{3}$)|(^\d{2}$)|(^\d$)/g)) {
         flag = false;
@@ -114,7 +114,7 @@ function validateUserEdit(input) {
     return flag;
 }
 
-function validateTeamEdit(input) {
+function validateTeam(input) {
     let txtNome = input.nome.value;
     let txtTecnico = input.tecnico.value;
     let txtEstado = input.estado.value;
@@ -127,7 +127,7 @@ function validateTeamEdit(input) {
 
     const alertContainer = document.getElementById('alerts');
 
-    if (!txtNome || !txtTecnico || !txtEstado || !txtPosicao || !txtCidade || !txtArena) {
+    if (!txtNome || !txtTecnico || !txtEstado || !txtCidade || !txtArena) {
         flag = false;
         createAlertDiv("Todos os campos são obrigatórios", alertContainer);
     }

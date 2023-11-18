@@ -17,9 +17,7 @@
 </head>
 <body>
     <?php include "./assets/components/header.php";?>
-    <?php
-        session_start();
-        
+    <?php        
         if (isset($_SESSION['isAdmin'])) {
             $_SESSION['isAdmin'] = true;
             $_SESSION['id'] = 00;
@@ -44,7 +42,13 @@
         $result = $conn->query($sql);
     ?>
     <section class="main" style="margin-top: 5vh;">
-        <h2>Todos os times (<?php echo $result->num_rows ?>)</h2>
+        <div class="names">
+            <h2>Todos os times (<?php echo $result->num_rows ?>)</h2>
+            <a href="teams_cad.php">
+                <button>Cadastrar time</button>
+            </a>
+        </div>
+        
         <div class="main-content">
             <table>
                 <tr>
@@ -61,41 +65,45 @@
                     ?>
                 </tr>
                 <?php
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                        <tr>
+                            <td>
+                                <a href="players.php?id=<?php echo $row['Id_time'] ?>">
+                                    <?php echo $row["Nome_time"] ?>
+                                </a>
+                            </td>
+                            <td><?php echo $row["Tecnico"] ?></td>
+                            <td><?php echo $row["Estado"] ?></td>
+                            <td><?php echo $row["Cidade"] ?></td>
+                            <td><?php echo $row["Arena"] ?></td>
+                            <?php 
+                                if (isset($_SESSION['isAdmin'])) {
                             ?>
-                            <tr>
-                                <td>
-                                    <a href="players.php?id=<?php echo $row['Id_time'] ?>">
-                                        <?php echo $row["Nome_time"] ?>
-                                    </a>
-                                </td>
-                                <td><?php echo $row["Tecnico"] ?></td>
-                                <td><?php echo $row["Estado"] ?></td>
-                                <td><?php echo $row["Cidade"] ?></td>
-                                <td><?php echo $row["Arena"] ?></td>
-                                <?php 
-                                    if (isset($_SESSION['isAdmin'])) {
-                                ?>
-                                        <td>
-                                            <a href="teams_edit.php?id=<?php echo $row['Id_time'] ?>">
-                                                Editar
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="teams_del_php.php?id=<?php echo $row['Id_time'] ?>">
-                                                Remover
-                                            </a>
-                                        </td>
-                                        <?php
-                                    }
-                                ?>
-                            </tr>
-                            <?php
-                        }
+                                    <td>
+                                        <a href="teams_edit.php?id=<?php echo $row['Id_time'] ?>">
+                                            Editar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="teams_del_php.php?id=<?php echo $row['Id_time'] ?>">
+                                            Remover
+                                        </a>
+                                    </td>
+                                    <?php
+                                }
+                            ?>
+                        </tr>
+                        <?php
                     }
+                } else {
                 ?>
             </table>
+                <?php
+                    echo "<h3 style='text-align: center; margin-top: 1.5vh;'>Não há times registrados ainda...</h3>";
+                }
+                ?>
         </div>
     </section>
     <footer class="footer-background">

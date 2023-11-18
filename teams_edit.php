@@ -17,7 +17,6 @@
 <body>
     <?php include "./assets/components/header.php";?>
     <?php 
-        session_start();
         include("connection.php");
         if (!isset($_SESSION["id"])) {
             header("Location: index.php");
@@ -47,7 +46,7 @@
     ?>
     <div>
         <div class="reg-form-div">
-            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateTeamEdit(this)" style="margin: auto;" action="teams_edit_php.php">
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateTeam(this)" style="margin: auto;" action="teams_edit_php.php">
                 <h1>Editar Time</h1>
                 <div class="form">
                     <div style="text-align: center; margin-top: 2px">

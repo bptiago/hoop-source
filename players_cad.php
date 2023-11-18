@@ -20,36 +20,43 @@
         include("connection.php");
         if (!isset($_SESSION["id"])) {
             header("Location: index.php");
+        }
+        else if (!$_SESSION['isAdmin']) {
+    ?>
+        <script>
+            alert("Você não tem permissão de exclusão no sistema");
+            history.go(-1);
+        </script>
+    <?php
         } else {
             $id = $_GET['id'];
-            
-            $sql = "SELECT * FROM Usuario WHERE ID_usuario = '$id'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    $nome = $row["Nome_completo"];
-                    $dataNascimento = $row["Data_nascimento"];
-                    $email = $row["Email"];
-                }
-            }
         }
     ?>
     <div>
         <div class="reg-form-div">
-            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateUserEdit(this)" style="margin: auto;" action="users_edit_php.php">
-                <h1>Editar Usuário</h1>
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validatePlayer(this)" style="margin: auto;" action="players_cad_php.php">
+                <h1>Adicionar Jogador</h1>
                 <div class="form">
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" class="input" placeholder="Nome" value="<?php echo $nome ?>">
+                        <input type="text" name="nome" id="nome" class="input" placeholder="Nome">
                     </div>
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="birth">Data de Nascimento</label>
-                        <input type="date" name="birth" id="birth" class="input" placeholder="Birthdate" min="1930-01-01" value="<?php echo $dataNascimento ?>">
+                        <input type="date" name="birth" id="birth" class="input" placeholder="Data de nascimento" min="1930-01-01">
                     </div>
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="input" placeholder="Email" value="<?php echo $email ?>">
+                        <input type="text" name="nacionalidade" id="nacionalidade" class="input" placeholder="Nacionalidade">
+                    </div>
+                    <div style="text-align: center; margin-top: 2px">
+                        <input type="text" name="posicao" id="posicao" class="input" placeholder="Posição (Ala, Armador ou Pivo)">
+                    </div>
+                    <div style="text-align: center; margin-top: 2px">
+                        <input type="text" name="camiseta" id="camiseta" class="input" placeholder="Camiseta">
+                    </div>
+                    <div style="text-align: center; margin-top: 2px">
+                        <input type="text" name="altura" id="altura" class="input" placeholder="Altura (metros)">
+                    </div>
+                    <div style="text-align: center; margin-top: 2px">
+                        <input type="text" name="valorContrato" id="valorContrato" class="input" placeholder="Valor do contrato (só números)">
                     </div>
                     <input type="hidden" name="hideId" value="<?php echo $id ?>">
                     <div>

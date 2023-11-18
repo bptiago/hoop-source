@@ -18,7 +18,6 @@
 <body>
     <?php include "./assets/components/header.php";?>
     <?php
-    session_start();
     if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     ?>
         <script>
@@ -32,7 +31,7 @@
         <div class="main-content">
             <h1>HoopSource</h1>
             <h2>Fique por dentro do jogo!</h2>
-            <h3>Acompanhe seu time favorito, seus jogadores prediletos e tudo o que o basquete pode lhe ofecerer!</h3>
+            <h3>Acompanhe seu time favorito e seus jogadores prediletos!</h3>
             <div class="center-bottom-container">
                 <div>
                     <h4>Não tem cadastro?</h4>
@@ -46,7 +45,22 @@
         </div>
     </section>
     <footer class="footer-background">
-        <h2>Sobre nós</h2>
+        <h2 style="text-align: center; padding: 12px 6px; color: rgb(63, 96, 240)">Sobre nós</h2>
+        <div class="footer-layout">
+            <div style="text-align:center;">
+                <h3>A equipe</h3>
+                <p style="margin: 6px 0px">Estudantes de BSI - PUCPR</p>
+                <ul style="list-style: none;">
+                    <li>Felipe Kureski</li>
+                    <li>Henrique Grigoli</li>
+                    <li>Tiago</li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <h3>O projeto</h3>
+                <p style="width: 30vw;">O HoopSource é uma plataforma de visualização e administração de times e jogadores de basquete. Há dois tipos de cadastro no serviço: o usuário normal e o administrador. O perfil de acesso comum consegue visualizar os times registrados na plataforma e buscar informações de interesse pelo time ou seus jogadores. O perfil de administrador é voltado para o gerenciamento dos dados do serviço, possibilitando o cadastro, edição e remoção de informações relacionadas aos times e também aos jogadores.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

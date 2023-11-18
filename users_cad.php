@@ -17,7 +17,6 @@
 <body>
     <?php include "./assets/components/header.php";?>
     <?php
-    session_start();
     if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     ?>
         <script>

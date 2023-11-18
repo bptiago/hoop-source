@@ -17,7 +17,6 @@
 <body>
     <?php include "./assets/components/header.php";?>
     <?php 
-        session_start();
         include("connection.php");
         if (!isset($_SESSION["id"])) {
             header("Location: index.php");
@@ -49,7 +48,7 @@
     ?>
     <div>
         <div class="reg-form-div">
-            <form method="post" name="cadastro" class="reg-form" onsubmit="return validatePlayerEdit(this)" style="margin: auto;" action="players_edit_php.php">
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validatePlayer(this)" style="margin: auto;" action="players_edit_php.php">
                 <h1>Editar Jogador</h1>
                 <div class="form">
                     <div style="text-align: center; margin-top: 2px">
@@ -66,7 +65,7 @@
                     </div>
                     <div style="text-align: center; margin-top: 2px">
                         <label for="posicao">Posição (Ala, volante ou pivo)</label>
-                        <input type="text" name="posicao" id="posicao" class="input" placeholder="Posição (Ala, Armador ou Pivô)" value="<?php echo $posicao ?>">
+                        <input type="text" name="posicao" id="posicao" class="input" placeholder="Posição (Ala, Armador ou Pivo)" value="<?php echo $posicao ?>">
                     </div>
                     <div style="text-align: center; margin-top: 2px">
                         <label for="camiseta">Número da camiseta</label>

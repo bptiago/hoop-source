@@ -1,8 +1,10 @@
 .footer-background {
-    background-color: rgb(218, 221, 227);
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    background-color: rgb(242, 242, 243);
+}
+
+.footer-layout {
+    display: flex;
+    justify-content: center;
+    gap: 20vw;
+    margin-left: 10vw;
 }

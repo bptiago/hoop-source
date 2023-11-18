@@ -17,20 +17,16 @@
 
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-            //Is ok, add to database
-            require_once "connection.php";
             $sql_query = "INSERT INTO Usuario (Nome_completo, Data_nascimento, Email, Senha)
             VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql_query);
 
             if ($stmt) {
-                // Valid query and connection
                 $stmt->bind_param("ssss", $fullName, $birthDate, $email, $password_hash);
                 $stmt->execute();
                 $stmt->close();
                 header("Location: users_login.php");
             } else {
-                // Something went wrong
                 ?>
                 <script>
                     alert("Algo deu errado...");

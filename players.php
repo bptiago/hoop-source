@@ -18,8 +18,6 @@
 <body>
     <?php include "./assets/components/header.php";?>
     <?php
-        session_start();
-        
         if (isset($_SESSION['isAdmin'])) {
             $_SESSION['isAdmin'] = true;
             $_SESSION['id'] = 00;
@@ -32,7 +30,12 @@
         $result = $conn->query($sql);
     ?>
     <section class="main" style="margin-top: 5vh;">
-        <h2>Todos os jogadores (<?php echo $result->num_rows ?>)</h2>
+        <div class="names">
+            <h2>Todos os jogadores (<?php echo $result->num_rows ?>)</h2>
+            <a href="players_cad.php?id=<?php echo $id ?>">
+                <button>Cadastrar jogador</button>
+            </a>
+        </div>
         <div class="main-content">
             <table>
                 <tr>
@@ -53,41 +56,45 @@
                 <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td>
+                            <a href="jogador.php?id=<?php echo $row['ID_jogador'] ?>">
+                                <?php echo $row["Nome"] ?>
+                            </a>
+                        </td>
+                        <td><?php echo $row["Data_nascimento"] ?></td>
+                        <td><?php echo $row["Nacionalidade"] ?></td>
+                        <td><?php echo $row["Posicao"] ?></td>
+                        <td><?php echo $row["Numero"] ?></td>
+                        <td><?php echo $row["Altura"]. ' m' ?></td>
+                        <td><?php echo $row["Valor"] ?></td>
+                        <?php 
+                        if (isset($_SESSION['isAdmin'])) {
                         ?>
-                            <tr>
-                                <td>
-                                    <a href="jogador.php?id=<?php echo $row['ID_jogador'] ?>">
-                                        <?php echo $row["Nome"] ?>
-                                    </a>
-                                </td>
-                                <td><?php echo $row["Data_nascimento"] ?></td>
-                                <td><?php echo $row["Nacionalidade"] ?></td>
-                                <td><?php echo $row["Posicao"] ?></td>
-                                <td><?php echo $row["Numero"] ?></td>
-                                <td><?php echo $row["Altura"]. ' m' ?></td>
-                                <td><?php echo $row["Valor"] ?></td>
-                                <?php 
-                                    if (isset($_SESSION['isAdmin'])) {
-                                ?>
-                                        <td>
-                                            <a href="players_edit.php?id=<?php echo $row['ID_jogador'] ?>">
-                                                Editar
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="players_del_php.php?id=<?php echo $row['ID_jogador'] ?>">
-                                                Remover
-                                            </a>
-                                        </td>
-                                        <?php
-                                    }
-                                ?>
-                            </tr>
-                            <?php
+                        <td>
+                            <a href="players_edit.php?id=<?php echo $row['ID_jogador'] ?>">
+                                Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href="players_del_php.php?id=<?php echo $row['ID_jogador'] ?>">
+                                Remover
+                            </a>
+                        </td>
+                        <?php
                         }
+                        ?>
+                    </tr>
+                    <?php
                     }
+                } else {
                 ?>
             </table>
+                <?php  
+                    echo "<h3 style='text-align: center; margin-top: 1.5vh;'>Não há jogadores registrados ainda...</h3>";
+                }
+                ?>
         </div>
     </section>
     <footer class="footer-background">

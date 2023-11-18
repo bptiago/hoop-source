@@ -20,38 +20,36 @@
         include("connection.php");
         if (!isset($_SESSION["id"])) {
             header("Location: index.php");
-        } else {
-            $id = $_GET['id'];
-            
-            $sql = "SELECT * FROM Usuario WHERE ID_usuario = '$id'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    $nome = $row["Nome_completo"];
-                    $dataNascimento = $row["Data_nascimento"];
-                    $email = $row["Email"];
-                }
-            }
+        }
+        else if (!$_SESSION['isAdmin']) {
+    ?>
+        <script>
+            alert("Você não tem permissão de exclusão no sistema");
+            history.go(-1);
+        </script>
+    <?php
         }
     ?>
     <div>
         <div class="reg-form-div">
-            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateUserEdit(this)" style="margin: auto;" action="users_edit_php.php">
-                <h1>Editar Usuário</h1>
+            <form method="post" name="cadastro" class="reg-form" onsubmit="return validateTeam(this)" style="margin: auto;" action="teams_cad_php.php">
+                <h1>Adicionar Time</h1>
                 <div class="form">
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" class="input" placeholder="Nome" value="<?php echo $nome ?>">
+                        <input type="text" name="nome" id="nome" class="input" placeholder="Nome do time">
                     </div>
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="birth">Data de Nascimento</label>
-                        <input type="date" name="birth" id="birth" class="input" placeholder="Birthdate" min="1930-01-01" value="<?php echo $dataNascimento ?>">
+                        <input type="text" name="tecnico" id="tecnico" class="input" placeholder="Técnico principal">
                     </div>
                     <div style="text-align: center; margin-top: 2px">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="input" placeholder="Email" value="<?php echo $email ?>">
+                        <input type="text" name="estado" id="estado" class="input" placeholder="Estado">
                     </div>
-                    <input type="hidden" name="hideId" value="<?php echo $id ?>">
+                    <div style="text-align: center; margin-top: 2px">
+                        <input type="text" name="cidade" id="cidade" class="input" placeholder="Cidade">
+                    </div>
+                    <div style="text-align: center; margin-top: 2px">
+                        <input type="text" name="arena" id="arena" class="input" placeholder="Arena/Estádio sede">
+                    </div>
                     <div>
                         <input type="submit" value="Enviar" name="send" class="sub-btn">
                     </div>

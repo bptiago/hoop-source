@@ -59,7 +59,7 @@
                     ?>
                     <tr>
                         <td>
-                            <a href="jogador.php?id=<?php echo $row['ID_jogador'] ?>">
+                            <a>
                                 <?php echo $row["Nome"] ?>
                             </a>
                         </td>

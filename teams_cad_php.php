@@ -7,7 +7,7 @@
     else if (!$_SESSION['isAdmin']) {
 ?>
 <script>
-    alert("Você não tem permissão de exclusão no sistema");
+    alert("Você não tem permissão de registro no sistema");
     history.go(-1);
 </script>
 <?php

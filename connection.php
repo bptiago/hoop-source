@@ -1,7 +1,7 @@
 <?php
     $hostName = "localhost";
     $userName = "root";
-    $password = "PUC@1234";
+    $password = "";
     $dbName = "hoopsource";
     $port = "3306";
     $conn = new mysqli($hostName, $userName, $password, $dbName, $port);
